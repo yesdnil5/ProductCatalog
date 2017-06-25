@@ -1,5 +1,13 @@
-<h1>Edit Product</h1>
+<html>
+	<body>
+		<div class="container">
+			<h1>Edit Product
+						<div class="btn-group">
+			<%= link_to 'Back', products_path, :class => "btn btn-default" %>
+			</div>
+			</h1>
 
-<%= render 'form' %>
-
-<%= link_to 'Back', products_path %>
+			<%= render 'form' %>
+		</div>
+	</body>
+</html>

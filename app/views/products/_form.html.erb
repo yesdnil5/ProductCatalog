@@ -1,24 +1,14 @@
-<html>
+<%= bootstrap_form_for(@product) do |f| %>
 
-	<body>
 
-		<div class="container">
 
-			<%= bootstrap_form_for(@product) do |f| %>
+	<%= f.text_field :title %>
 
-			<%= f.text_field :title %>
+	<%= f.text_area :description %>
 
-			<%= f.text_area :description %>
+	<%= f.date_select :start_date %>
 
-			<%= f.date_select :start_date %>
-
-			<%= f.date_select :end_date %>
-
-			<%= f.submit "Create" %>
+	<%= f.date_select :end_date %>
+	<%= f.submit "Create" %>
 			 
-			<% end %>
-
-		</div>
-	</body>
-
-</html>
+<% end %>

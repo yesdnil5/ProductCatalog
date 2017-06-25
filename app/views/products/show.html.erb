@@ -4,14 +4,18 @@
 
 		<h1>Product <%= @product.title %></h1>
 
-			<table class="table">
+			<div class="btn-group">
+			<%= link_to 'Back', products_path, :class => "btn btn-default" %>
+			</div>
+
+			<table class="table table-responsive">
 				<thead>
 					<tr>
 						<th>Title</th>
 						<th>Description</th>
 						<th>Start Date</th>
 						<th>End Date</th>
-						<th colspan="4"></th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -19,17 +23,18 @@
 					<td><%= @product.description %></td>
 					<td><%= @product.start_date %></td>
 					<td><%= @product.end_date %></td>
-				</tbody>
-			</table>
-		
-			<div class="btn-group">
-				<%= link_to 'Edit', edit_product_path(@product), :class => "btn btn-default" %>
+					<td>
+					<div class="btn-group">
+				<%= link_to 'Edit', edit_product_path(@product), :class => "btn btn-success" %>
 				<% if defined? @product.end_date && @product.end_date > Date.today %>
 				<%= link_to 'Discontinue', product_path(@product, :product => {:end_date => Date.today.to_s}),
 					method: :put,
-					data: { confirm: 'Are you sure?' }, :class => "btn btn-default" %>
+					data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
 					<% end %>
 			</div>
+					</td>
+				</tbody>
+			</table>
 		</div>
 		<div class="container">
 			<h1>Rates</h1>
@@ -42,7 +47,7 @@
 						<th>End Date</th>
 						<th>Recurrence</th>
 						<th>Price</th>
-						<th colspan="4"></th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -53,13 +58,13 @@
 						<td><%= rate.start_date %></td>
 						<td><%= rate.end_date %></td>
 						<td><%= rate.recurrence %></td>
-						<td>$<%= rate.price %></td>
+						<td><%= number_to_currency(rate.price) %></td>
 						<td>
 						<div class="btn-group">
-							<%= link_to 'Edit', edit_product_rate_path(@product, rate), :class => "btn btn-default" %>
-							<%= link_to 'Delete', product_rate_path(@product, rate),
-								method: :delete,
-								data: { confirm: 'Are you sure?' }, :class => "btn btn-default" %>
+							<%= link_to 'Edit', edit_product_rate_path(@product, rate), :class => "btn btn-success" %>
+						<%= link_to 'Discontinue', product_rate_path(@product, rate, :rate => {:end_date => Date.today.to_s}),
+							method: :put,
+							data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
 						</div>
 						</td>
 					</tr>
@@ -67,8 +72,8 @@
 				</tbody>
 			</table>
 		</div>
-		<h2>Add new rate</h2>
 		<div class="container">
+			<h2>Add new rate</h2>
 			<%= render 'rates/form' %>
 		</div>
 	</body>

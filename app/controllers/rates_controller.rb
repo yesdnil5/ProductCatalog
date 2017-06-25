@@ -11,6 +11,7 @@ class RatesController < ApplicationController
 		@rate = @product.rates.find(params[:id])
 		@rate.update(rate_params)
 		redirect_to product_path(@product)
+
 	end
 
 	def destroy

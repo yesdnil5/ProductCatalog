@@ -1,16 +1,15 @@
-<%= bootstrap_form_for([@product, @product.rates.build], html: {class: 'form-horizontal'}) do |f| %>
+<%= bootstrap_form_for([@product, @product.rates.build], layout: :horizontal) do |f| %>
 
 		<%= f.text_field :title %>
 
 		<%= f.text_area :description %>
 
-		<%= f.date_select :start_date %>
-
-		<%= f.date_select :end_date %>
+			<%= f.date_select :start_date %>
+			<%= f.date_select :end_date %>
 
 		<%= f.select :recurrence, ["One-time", "Monthly", "Quarterly", "Annually"], {label: "How often?" }, { class: "selectpicker"} %>
 
-		<%= f.number_field :price %>
+		<%= f.text_field :price,  prepend: "$" %>
 
 		<%= f.submit "Add New Rate" %>
 	 
