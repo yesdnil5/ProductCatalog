@@ -1,0 +1,47 @@
+<html>
+	<body>
+		<div class="container">
+
+		<h1>Product <%= @product.title %></h1>
+
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Title</th>
+						<th>Description</th>
+						<th>Start Date</th>
+						<th>End Date</th>
+						<th colspan="4"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<td><%= @product.title %></td>
+					<td><%= @product.description %></td>
+					<td><%= @product.start_date %></td>
+					<td><%= @product.end_date %></td>
+				</tbody>
+			</table>
+		</div>
+		<div class="container">
+			<h1>Rates</h1>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Title</th>
+						<th>Description</th>
+						<th>Start Date</th>
+						<th>End Date</th>
+						<th>Recurrence</th>
+						<th>Price</th>
+						<th colspan="4"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<%= render @product.rates %>
+				</tbody>
+			</table>
+		</div>
+		<h2>Add new rate</h2>
+		<%= render 'rates/form' %>
+	</body>
+</html>
