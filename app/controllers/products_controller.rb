@@ -1,7 +1,5 @@
 class ProductsController < ApplicationController
 
-	before_action :process_dates, only: [:create, :update]
-
 	def new
 		@product = Product.new
 	end
@@ -41,15 +39,6 @@ class ProductsController < ApplicationController
 		@product.destroy
 
 		redirect_to products_path
-	end
-
-	def process_dates
-		[:start_date, :end_date].each do |d|
-			date = params[:product][d]
-			date_parts = date.split('/')
-			date_parts[0], date_parts [1] = date_parts[1], date_parts[0]
-			params[:product][d] = date_parts.join('/')
-		end
 	end
 
 	private
