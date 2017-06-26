@@ -4,6 +4,8 @@ class Product < ApplicationRecord
 	validates :description, presence: true
   validate :end_date_cant_be_in_past, :start_date_cant_be_past_end_date
 
+  scope :active, -> { where("end_date > DATETIME('now')") }
+
   def end_date_cant_be_in_past
 		if end_date.present? && end_date < Date.today
 			errors.add(:end_date, "Can't be in the past")

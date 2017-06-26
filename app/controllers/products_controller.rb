@@ -10,10 +10,23 @@ class ProductsController < ApplicationController
 
 	def index
 		@products = Product.all
+		@active_products = Product.active
+		respond_to do |format|
+			format.html
+			format.json { render json: @active_products }
+		end
 	end
 
 	def show
 		@product = Product.find(params[:id])
+		respond_to do |format|
+			format.html
+			if @product.end_date > Date.today
+				format.json { render json: @product }
+			else
+				format.json { render json: {}}
+			end
+		end
 	end
 
 	def create
