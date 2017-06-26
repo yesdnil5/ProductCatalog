@@ -6,8 +6,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Product.create(title: 'MyString1',
-  description: 'MyText1',
-  start_date: '2017-06-24 00:05:14',
-  end_date: '2017-06-24 00:05:14'
+Product.create(title: 'Product1',
+  description: 'This is the first product',
+  start_date: '2017-06-23',
+  end_date: '2017-06-30'
+)
+
+Product.create(title: 'Product2',
+  description: 'This is the second product',
+  start_date: '2017-06-23',
+  end_date: '2017-07-30'
 )
